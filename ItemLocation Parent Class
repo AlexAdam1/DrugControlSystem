@@ -1,0 +1,25 @@
+public class ItemLocation {
+    // variables for ItemLocation class
+    int aisle;
+    int section;
+    int itemsOnShelf;
+
+    // default constructor
+    ItemLocation() {
+
+    }
+
+    // constructor with both parameters
+    ItemLocation(int aisle, int section, int itemsOnShelf) {
+        this.aisle = aisle;
+        this.section = section;
+        this.itemsOnShelf = itemsOnShelf;
+    }
+
+    // print method that prints out aisle and section
+    public void printInfo(){
+        System.out.println("Aisle: " + aisle);
+        System.out.println("Section: " + section);
+        System.out.println("Item quantity: " + itemsOnShelf);
+    }
+}
