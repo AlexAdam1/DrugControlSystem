@@ -1,0 +1,63 @@
+public class Bandages extends ItemLocation {
+    // variables for Bandages class
+String retailName;
+String companyName;
+String expiryDate;
+String ageGroup;
+boolean waterProof;
+
+// default constructor
+Bandages (){
+
+}
+
+// getter and setter methods for all Bandage variables
+public void setRetailName(String retailName) {
+    this.retailName = retailName;
+}
+public String getRetailName() {
+    return retailName;
+}
+
+public void setCompanyName(String companyName) {
+    this.companyName = companyName;
+}
+public String getCompanyName() {
+    return companyName;
+}
+
+public void setExpiryDate(String expiryDate) {
+    this.expiryDate = expiryDate;
+}
+public String getExpiryDate() {
+    return expiryDate;
+}
+
+public void setAgeGroup(String ageGroup) {
+    this.ageGroup = ageGroup;
+}
+public String getAgeGroup() {
+    return ageGroup;
+}
+
+public void setWaterProof(boolean waterProof) {
+    this.waterProof = waterProof;
+}
+public boolean getWaterProof() {
+    return waterProof;
+}
+
+// Overridden method that prints all values for Bandages
+@Override
+    public void printInfo(){
+    System.out.println("Retail Name: " + retailName);
+    System.out.println("Company Name: " + companyName);
+    System.out.println("Expiration Date: " + expiryDate);
+    System.out.println("Age Group: " + ageGroup);
+    if (waterProof)
+    System.out.println("Water Proof: Yes ");
+    else{
+        System.out.println("Water Proof: No");
+    }
+}
+}
