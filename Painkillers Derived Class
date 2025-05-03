@@ -1,0 +1,55 @@
+public class Painkillers extends ItemLocation {
+    // variables for Painkillers class
+    String retailName;
+    String drugCompanyName;
+    String expiryDate;
+    String ageGroup;
+
+    // default constructor
+    Painkillers(){
+
+    }
+
+    // getter and setter methods for all variables
+    public void setRetailName(String retailName){
+        this.retailName = retailName;
+    }
+
+    public String getRetailName(){
+        return retailName;
+    }
+
+    public void setDrugCompanyName(String drugName){
+        this.drugCompanyName = drugName;
+    }
+
+    public String getDrugCompanyName(){
+        return drugCompanyName;
+    }
+
+    public void setExpiryDate(String expiryDate){
+        this.expiryDate = expiryDate;
+    }
+
+    public String getExpiryDate(){
+        return expiryDate;
+    }
+
+    public void setAgeGroup(String ageGroup){
+        this.ageGroup = ageGroup;
+    }
+
+    public String getAgeGroup(){
+        return ageGroup;
+    }
+
+    // overridden printInfo method that prints all values for Painkillers
+    @Override
+    public void printInfo(){
+        System.out.println("Retail Name: " + retailName);
+        System.out.println("Company Name: " + drugCompanyName);
+        System.out.println("Expiry Date: " + expiryDate);
+        System.out.println("Age Group: " + ageGroup);
+
+    }
+}
