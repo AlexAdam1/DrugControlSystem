@@ -1,0 +1,105 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class ItemMain extends ItemLocation {
+    public static void main(String[] args) throws Over500Exception {
+        // Value that uses do loop restart entire loop and ends if desired
+        boolean valid = true;
+        do {
+            Scanner sc = new Scanner(System.in);
+            // Try and catch that catches any exceptions
+            try {
+                // Case that changes dependent on what option is chosen
+                System.out.println("Enter 1 for Painkillers, 2 for Bandages, and 3 for Equipment");
+                switch (sc.nextInt()) {
+                    case 1:
+                        sc.nextLine();
+                        System.out.println("What is the aisle number, section number, and how many items are there? Please enter the aisle number, section number, and quantity of item");
+                        // Creates location of item, with aisle and section, based on user input
+                        ItemLocation il = new ItemLocation(sc.nextInt(),sc.nextInt(), sc.nextInt());
+                        sc.nextLine();
+                        // Gathers information on item being created
+                        Painkillers pain = new Painkillers();
+                        System.out.println("What is the retail name of this item?");
+                        pain.setRetailName(sc.nextLine());
+                        System.out.println("What is the company name of this item?");
+                        pain.setDrugCompanyName(sc.nextLine());
+                        System.out.println("What is the expiration date of this item?");
+                        pain.setExpiryDate(sc.nextLine());
+                        System.out.println("What age group is this item for?");
+                        pain.setAgeGroup(sc.nextLine());
+                        // Prints information gathered
+                        il.printInfo();
+                        pain.printInfo();
+                        break;
+                    case 2:
+                        sc.nextLine();
+                        System.out.println("What is the aisle number, section number, and how many items are there? Please enter the aisle number, section number, and quantity of item");
+                        // Creates location of item, with aisle and section, based on user input
+                        ItemLocation il2 = new ItemLocation(sc.nextInt(),sc.nextInt(), sc.nextInt());
+                        sc.nextLine();
+                        // Gathers information on item being created
+                        Bandages bandage = new Bandages();
+                        System.out.println("What is the retail name of this item?");
+                        bandage.setRetailName(sc.nextLine());
+                        System.out.println("What is the company name of this item?");
+                        bandage.setCompanyName(sc.nextLine());
+                        System.out.println("What is the expiration date of this item?");
+                        bandage.setExpiryDate(sc.nextLine());
+                        System.out.println("What age group is this item for?");
+                        bandage.setAgeGroup(sc.nextLine());
+                        System.out.println("Is this item water proof? Enter Y for yes and N for no");
+                        // Assigns boolean value based on whether the user says the bandage is waterproof or not
+                        if (sc.nextLine().equalsIgnoreCase("Y")){
+                            bandage.setWaterProof(true);
+                        }
+                        else {
+                            bandage.setWaterProof(false);
+                        }
+                        // Prints information gathered
+                        il2.printInfo();
+                        bandage.printInfo();
+                        break;
+                    case 3:
+                        sc.nextLine();
+                        System.out.println("What is the aisle number, section number, and how many items are there? Please enter the aisle number, section number, and quantity of item");
+                        // Creates location of item, with aisle and section, based on user input
+                        ItemLocation il3 = new ItemLocation(sc.nextInt(),sc.nextInt(), sc.nextInt());
+                        sc.nextLine();
+                        // Gathers information on item being created
+                        Equipment equip = new Equipment();
+                        System.out.println("What is the retail name of this item?");
+                        equip.setRetailName(sc.nextLine());
+                        System.out.println("What is the company name of this item?");
+                        equip.setCompanyName(sc.nextLine());
+                        System.out.println("What is the weight of the item? Please enter in pounds");
+                        // User input is invalid if item is over 500 pounds
+                        int weight = sc.nextInt();
+                        if (weight > 500){
+                            throw new Over500Exception();
+                        }
+                        else {
+                            equip.setItemWeight(weight);
+                        }
+                        // Prints gathered information
+                        il3.printInfo();
+                        equip.printInfo();
+                        sc.nextLine();
+                        break;
+
+                }
+                // Gets user input for continuation of loop
+                System.out.println("\nWould you like to create another aisle or update your current one? Enter Y for yes and N for no");
+                String input = sc.nextLine();
+                if (input.equalsIgnoreCase("n")) {
+                    valid = false;
+                }
+                // User input is invalid if there is a InputMismatchException
+            } catch (InputMismatchException e) {
+                System.out.println("Incorrect input. Please try again");
+                // Catches if user inputs more than 500 pounds on an Equipment object
+            }catch (Over500Exception e) {
+                System.out.println(e.getMessage());
+            }
+            // Continues the loop if user desires
+        }while (valid);
